@@ -27,7 +27,8 @@ a {
 - - - - - - - - - - - - - - - - */
 #plansza{
     width: 100%;
-    height: 100px;
+    height: auto;
+    padding: 2rem 0 ;
     margin-bottom: 20px;
     text-align: center;
     font-size: 2.5rem;
