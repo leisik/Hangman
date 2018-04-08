@@ -244,7 +244,7 @@ input[type=button]:focus{
         color: white;
         text-align: center;
         margin: 0;
-        padding-top: 1.5rem;
+        /*padding-top: 1.5rem;*/
         padding-left: 2rem;
     } 
     .container{

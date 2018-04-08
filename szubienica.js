@@ -202,12 +202,14 @@ function sprawdz(letterNumber) {
         if(zmienna) {
             document.getElementById(character).style.color = "green";
             document.getElementById(character).style.borderColor = "green";
+            document.getElementById(character).style.backgroundColor = "rgba(0,255,0,0.3)";
 
         }
         else if(!zmienna) 
         {
             document.getElementById(character).style.color = "red";
             document.getElementById(character).style.borderColor = "red";
+            document.getElementById(character).style.backgroundColor = "rgba(255,0,0,0.3)";
             if(wrongAnswers < 9){wrongAnswers++;}
         }
 
@@ -247,4 +249,5 @@ function restart(){
     win = 0; 
     language = false;
     changePic(0); 
+    chanceLeft();
 }
