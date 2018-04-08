@@ -112,6 +112,7 @@ function changeCategory(nrKat) {
              document.getElementById(ups).style.backgroundColor = "green";
              document.getElementById(ups).style.fontWeight = "700";
          }
+
     }
     restart();
 }
@@ -212,6 +213,8 @@ function sprawdz(letterNumber) {
             document.getElementById(character).style.backgroundColor = "rgba(255,0,0,0.3)";
             if(wrongAnswers < 9){wrongAnswers++;}
         }
+        document.getElementById(character).style.cursor = "default";
+        document.getElementById(character).style.pointerEvents = "none";
 
         changePic(wrongAnswers);
         wtitePassword(haslo);
