@@ -10,7 +10,7 @@ var kat0, kat1, kat2, kat3, kat4, kat5;
 var kategories = ["Movie", "Football Player", "Country", "PC Equipment", "TV Show", "Car"];
 var kategorie = ["Film", "Piłkarz", "Państwo", "Sprzęt komputerowy", "Serial", "Samochód"];
 
-if(language){
+if(!language){
     kat0 = ["pulp fiction", "zielona mila", "skazani na shawshank", "piła", "teksańska masakra piłą mechaniczną", "matrix", "nietykalni", "władca pierścieni", "mr nobody"];
     kat1 = ["zinedine zidane", "cristiano ronaldo", "ronaldinho", "lionel messi", "luis figo", "eric cantona", "wayne rooney", "van der sar", "thierry henry", "ronaldinho"];
     kat2 = ["rwanda", " suazi", "lesotho", "liberia", "saint kittis i nevis", "polska", "madagaskar", "gabon", "kirgistan", "tadżykistan"];
@@ -44,7 +44,7 @@ function writeWord(m_pass) {
 
 //chanhes langueage in whole game
 function changeLanguage() {
-    if(language){
+    if(!language){
         document.getElementById("jezyk").innerHTML = '<img id="flaga" src="img/flagapl.jpg"><h4>PL</h4>';
         document.getElementById("plansza").innerHTML = "Wybierz kategorię!";
     }
