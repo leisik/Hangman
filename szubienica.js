@@ -28,9 +28,9 @@ if(language) {
     kat4 = ["lost", "stranger things", "dark", "prison break", "dexter", "the walking dead", "breaking bad", "better call saul", "black mirror", "narcos"];
     }
 
-kat5 = ["Alfa Romeo", "Aston Martin", "Audi", "Bentley", "Benz", "BMW", "Bugatti", "Cadillac", "Chevrolet", 
-"Chrysler", "Citroën", "Corvette", "DAF", "Dacia", "Daewoo", "Daihatsu", "Datsun", "De Lorean", "Dino", "Dodge",  
-"Farboud", "Ferrari", "Fiat", "Ford", "Honda", "Hummer", "Hyundai", "jaguar", "jeep", "kia", "koenigsegg",   
+kat5 = ["alfa romeo", "aston martin", "audi", "bentley", "benz", "bmw", "bugatti", "cadillac", "chevrolet", 
+"chrysler", "citroën", "corvette", "daf", "dacia", "daewoo", "daihatsu", "datsun", "de lorean", "dino", "dodge",  
+"farboud", "ferrari", "fiat", "ford", "honda", "hummer", "hyundai", "jaguar", "jeep", "kia", "koenigsegg",   
 "lada", "lamborghini", "lancia", "land rover", "lexus", "ligier", "lincoln", "lotus", "martini", "maserati", "maybach",  
 "mazda", "mclaren", "mercedes benz", "mini", "mitsubishi", "nissan", "noble", "opel", "peugeot", "pontiac",  
 "porsche", "renault", "rolls royce", "saab", "seat", "skoda", "smart", "spyker", "subaru", "suzuki", "toyota",   
@@ -230,7 +230,7 @@ function sprawdz(letterNumber) {
             document.getElementById("plansza").style.color = "black";
         }
     }
-    console.log(wrongAnswers);
+    console.log(character);
     chanceLeft();
 }
 //shows how many chances are left
