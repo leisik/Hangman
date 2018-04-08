@@ -1,0 +1,7 @@
+kat5 = ["Alfa Romeo", "Aston Martin", "Audi", "Bentley", "Benz", "BMW", "Bugatti", "Cadillac", "Chevrolet", 
+"Chrysler", "Citroën", "Corvette", "DAF", "Dacia", "Daewoo", "Daihatsu", "Datsun", "De Lorean", "Dino", "Dodge",  
+"Farboud", "Ferrari", "Fiat", "Ford", "Honda", "Hummer, "Hyundai", "jaguar", "jeep", "kia", "koenigsegg",   
+"lada", "lamborghini", "lancia", "land rover", "lexus", "ligier", "lincoln", "lotus", "martini", "maserati", "maybach",  
+"mazda", "mclaren", "mercedes benz", "mini", "mitsubishi", "nissan", "noble", "opel", "peugeot", "pontiac",  
+"porsche", "renault", "rolls royce", "saab", "seat", "skoda", "smart", "spyker", "subaru", "suzuki", "toyota",   
+"vauxhall", "volkswagen", "volvo"] 

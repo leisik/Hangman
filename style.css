@@ -118,6 +118,7 @@ img{
     text-align: center;
     transition: all 0.15s ease-in-out;
     cursor: pointer;
+    text-align: center;
 }
 
 .literka:hover{
@@ -150,6 +151,7 @@ input[type=button]:focus{
     text-transform: uppercase;
     color:aquamarine;
     font-weight: 700;
+    text-decoration: underline;
 }
 
 #bad-answer{
@@ -185,6 +187,29 @@ input[type=button]:focus{
     background-color: #c74c4c;
     
 }
+/* kiedys tu bedzie obsluga plikow
+#fromFile {
+    width: 200px;
+    height: auto;
+    background-color: #483D8B;
+    cursor: pointer;
+    position: fixed;
+    padding: 5px 10px;
+    bottom: 50px;
+    left: calc((90%-200px)/2);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.5rem;
+    
+}
+#fromFile:hover {
+    background-color: #6a5eac;
+}*/
+/* - - - - - - - - - - - - - - - 
+
+       CHANGE MEDIA SECTION
+
+- - - - - - - - - - - - - - - - */
 @media(min-width: 750px)
 {
     #szubienica{
