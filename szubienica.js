@@ -10,8 +10,28 @@ var kat0, kat1, kat2, kat3, kat4, kat5;
 var kategories = ["Movie", "Football Player", "Country", "PC Equipment", "TV Show", "Car"];
 var kategorie = ["Film", "Piłkarz", "Państwo", "Sprzęt komputerowy", "Serial", "Samochód"];
 
+if(language){
+    kat0 = ["pulp fiction", "zielona mila", "skazani na shawshank", "piła", "teksańska masakra piłą mechaniczną", "matrix", "nietykalni", "władca pierścieni", "mr nobody"];
+    kat1 = ["zinedine zidane", "cristiano ronaldo", "ronaldinho", "lionel messi", "luis figo", "eric cantona", "wayne rooney", "van der sar", "thierry henry", "ronaldinho"];
+    kat2 = ["rwanda", " suazi", "lesotho", "liberia", "saint kittis i nevis", "polska", "madagaskar", "gabon", "kirgistan", "tadżykistan"];
+    kat3 = ["myszka", "drukarka", "mikrofon", "dysk twardy", "płyta głowna", "pamięć ram", "obudowa", "klawiatura", "głośniki", "procesor"];
+    kat4 = ["lost", "stranger things", "dark", "skazani na śmierć", "dexter", "the walking dead", "breaking bad", "better call saul", "black mirror", "narcos"];
+    kat5 = ["bmw", "mercedes", "pagani", "bugatti", "citroen", "peugeot", "audi", "saab", "volvo", "dacia"];
+}
+else {
+
+    kat0 = ["pulp fiction", "the green mile", "shawshank redemption", "saw", "the texas chainsaw massacre", "matrix", "untouchables", "the lord of the rings", "mr nobody"];
+    kat1 = ["zinedine zidane", "cristiano ronaldo", "ronaldinho", "lionel messi", "luis figo", "eric cantona", "wayne rooney", "van der sar", "thierry henry", "ronaldinho"];
+    kat2 = ["rwanda", " suazi", "lesotho", "liberia", "saint kittis and nevis", "poland", "madagascar", "gabon", "kyrgyzstan", "tajikistan"];
+    kat3 = ["mouse", "printer", "microphone", "hard drive", "motherboard", "ram memory", "case", "keyboard", "speakers", "procesor"];
+    kat4 = ["lost", "stranger things", "dark", "prison break", "dexter", "the walking dead", "breaking bad", "better call saul", "black mirror", "narcos"];
+    kat5 = ["bmw", "mercedes", "pagani", "bugatti", "citroen", "peugeot", "audi", "saab", "volvo", "dacia"];
+    }
+
+
 window.onload = start;
 
+//writes word with blanck spaces in the top of the screen
 function writeWord(m_pass) {
     haslo = "";
     for (var i = 0; i < m_pass.length; i++){ 
@@ -23,21 +43,16 @@ function writeWord(m_pass) {
     wtitePassword(haslo);
 }
 
+//chanhes langueage in whole game
 function changeLanguage() {
     if(language){
         document.getElementById("jezyk").innerHTML = '<img id="flaga" src="img/flagapl.jpg"><h4>PL</h4>';
         document.getElementById("plansza").innerHTML = "Wybierz kategorię!";
-        kat0 = ["pulp fiction", "zielona mila", "skazani na shawshank", "piła", "teksańska masakra piłą mechaniczną", "matrix", "nietykalni", "władca pierścieni", "mr nobody"];
-        kat1 = ["zinedine zidane", "cristiano ronaldo", "ronaldinho", "lionel messi", "luis figo", "eric cantona", "wayne rooney", "van der sar", "thierry henry", "ronaldinho"];
-        kat2 = ["rwanda", " suazi", "lesotho", "liberia", "saint kittis i nevis", "polska", "madagaskar", "gabon", "kirgistan", "tadżykistan"];
-        kat3 = ["myszka", "drukarka", "mikrofon", "dysk twardy", "płyta głowna", "pamięć ram", "obudowa", "klawiatura", "głośniki", "procesor"];
-        kat4 = ["lost", "stranger things", "dark", "skazani na śmierć", "dexter", "the walking dead", "breaking bad", "better call saul", "black mirror", "narcos"];
-        kat5 = ["bmw", "mercedes", "pagani", "bugatti", "citroen", "peugeot", "audi", "saab", "volvo", "dacia"];
     }
     else {
         document.getElementById("jezyk").innerHTML = '<img id="flaga" src="img/flagauk.png"><h4>UK</h4>';
         document.getElementById("plansza").innerHTML = "Choose category!";
-        kat0 = ["pulp fiction", "zielona mila", "skazani na shawshank", "piła", "teksańska masakra piłą mechaniczną", "matrix", "nietykalni", "władca pierścieni", "mr nobody"];
+        kat0 = ["pulp fiction", "the green mile", "shawshank redemption", "saw", "the texas chainsaw massacre", "matrix", "untouchables", "the lord of the rings", "mr nobody"];
         kat1 = ["zinedine zidane", "cristiano ronaldo", "ronaldinho", "lionel messi", "luis figo", "eric cantona", "wayne rooney", "van der sar", "thierry henry", "ronaldinho"];
         kat2 = ["rwanda", " suazi", "lesotho", "liberia", "saint kittis and nevis", "poland", "madagascar", "gabon", "kyrgyzstan", "tajikistan"];
         kat3 = ["mouse", "printer", "microphone", "hard drive", "motherboard", "ram memory", "case", "keyboard", "speakers", "procesor"];
@@ -48,6 +63,7 @@ function changeLanguage() {
     start();
 }
 
+//draws a password from picked category
 function losuj(nrKat) {
     var numer = Math.floor(Math.random()*9);
     var chosenKat = "kat" + nrKat;
@@ -88,12 +104,14 @@ function losuj(nrKat) {
 
     writeWord(password); 
 }
-    
+
+//writes actuas password in the top of the screen
 function wtitePassword(haselko) {
     var kisiel = haselko.toUpperCase();
     document.getElementById("plansza").innerHTML = kisiel;
 }
 
+//sets alphabet, buttons and whole game logic
 function start() {
     var divContent = "";
     var kategoryContent = "";
@@ -124,77 +142,82 @@ function start() {
     
 }
 
+//changes pic when needed
 function changePic(wrongAnswers) {
     var plik = "<img src=\"img/s" + wrongAnswers + ".jpg\" />";
     document.getElementById("szubienica").innerHTML = plik;
 }
 
+//checks if picked letter is in password
 function sprawdz(letterNumber) { 
-    
-    //var node = document.getElementById("plansza");
-    //var answer = node.textContent;
-    haslo2 = haslo;
-    haslo = "";
-    var zmienna = 0;
-    var letters = "";
-    if(!language){
-        letters = "aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż";
-    }
-    else {
-        letters = "abcdefghijklmnopqrstuvwxyz";
-    }
-
-    var character = letters.charAt(letterNumber);
-    
-    for (var i = 0; i < password.length; i++){ 
-        if(password[i] == character){
-            zmienna = 1;
-            haslo = haslo + character;
+    if(password.length > 0)
+    {
+        //var node = document.getElementById("plansza");
+        //var answer = node.textContent;
+        haslo2 = haslo;
+        haslo = "";
+        var zmienna = 0;
+        var letters = "";
+        if(!language){
+            letters = "aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż";
         }
-        else if (password.charAt(i) == ' '){
-            haslo = haslo + " ";
-        }
-        else if (haslo2.charAt(i) == '-'){
-            haslo = haslo + "-";
-        }
-        else if (haslo2.charAt(i) != '-'){
-            haslo = haslo + haslo2[i];
+        else {
+            letters = "abcdefghijklmnopqrstuvwxyz";
         }
 
-        
-    }
-    if(zmienna) {
-        document.getElementById(character).style.color = "green";
-        document.getElementById(character).style.borderColor = "green";
-        
-    }
-    else if(!zmienna) 
-    {
-        document.getElementById(character).style.color = "red";
-        document.getElementById(character).style.borderColor = "red";
-        if(wrongAnswers < 9){wrongAnswers++;}
-    }
-    
-    document.getElementById(character).style.pointerEvents = "none";
-    
-    changePic(wrongAnswers);
-    wtitePassword(haslo);
-    
-    if (wrongAnswers >= 9)
-    {
-        document.getElementById("alfabet").innerHTML = 'Przegrana! prawidłowe hasło: <span id="correct-answer">'+ password +'</span><br /><br /><span class="powtorka" onclick="restart()">JESZCZE RAZ?</span>';
-        document.getElementById("plansza").style.backgroundColor = "#f90606";
-        document.getElementById("plansza").style.color = "black";
-    }
-    
-        if (haslo == password)
-    { 
-        document.getElementById("alfabet").innerHTML = 'BRAWO, WYGRAŁEŚ! Prawidłowe hasło: <span id="correct-answer">'+ haslo +'</span><br /><br /><span class="powtorka" onclick="restart()">JESZCZE RAZ?</span>';
-        document.getElementById("plansza").style.backgroundColor = "rgba(15,240,30,0.7)";
-        document.getElementById("plansza").style.color = "black";
+        var character = letters.charAt(letterNumber);
+
+        for (var i = 0; i < password.length; i++){ 
+            if(password[i] == character){
+                zmienna = 1;
+                haslo = haslo + character;
+            }
+            else if (password.charAt(i) == ' '){
+                haslo = haslo + " ";
+            }
+            else if (haslo2.charAt(i) == '-'){
+                haslo = haslo + "-";
+            }
+            else if (haslo2.charAt(i) != '-'){
+                haslo = haslo + haslo2[i];
+            }
+
+
+        }
+        if(zmienna) {
+            document.getElementById(character).style.color = "green";
+            document.getElementById(character).style.borderColor = "green";
+
+        }
+        else if(!zmienna) 
+        {
+            document.getElementById(character).style.color = "red";
+            document.getElementById(character).style.borderColor = "red";
+            if(wrongAnswers < 9){wrongAnswers++;}
+        }
+
+        document.getElementById(character).style.pointerEvents = "none";
+
+        changePic(wrongAnswers);
+        wtitePassword(haslo);
+
+        if (wrongAnswers >= 9)
+        {
+            document.getElementById("alfabet").innerHTML = 'Przegrana! prawidłowe hasło: <span id="correct-answer">'+ password +'</span><br /><br /><span class="powtorka" onclick="restart()">JESZCZE RAZ?</span>';
+            document.getElementById("plansza").style.backgroundColor = "#f90606";
+            document.getElementById("plansza").style.color = "black";
+        }
+
+            if (haslo == password)
+        { 
+            document.getElementById("alfabet").innerHTML = 'BRAWO, WYGRAŁEŚ! Prawidłowe hasło: <span id="correct-answer">'+ haslo +'</span><br /><br /><span class="powtorka" onclick="restart()">JESZCZE RAZ?</span>';
+            document.getElementById("plansza").style.backgroundColor = "rgba(15,240,30,0.7)";
+            document.getElementById("plansza").style.color = "black";
+        }
     }
 }
 
+//reloads website
 function restart(){
     window.location.reload();
     changePic(0);

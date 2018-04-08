@@ -14,7 +14,11 @@ body{
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
-    padding: 50px;
+    padding: 1vw;
+}
+
+a {
+    text-decoration: none;
 }
 /* - - - - - - - - - - - - - - - 
 
@@ -72,10 +76,10 @@ body{
 
 - - - - - - - - - - - - - - - - */
 #szubienica{
-    float: left;
-    width: calc((100vw - 105px)/2);
+    width: 60vw;
     height: auto;
-    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
 }
 img{
     width: 100%;
@@ -88,14 +92,11 @@ img{
 - - - - - - - - - - - - - - - - */
 
 #alfabet{
-    float: left;
-    width: calc((100vw - 105px)/2);
-    max-width: 440px;
+    text-align: center;
+    width: 90vw;
+    padding: 0 4.5vw;
     height: auto;
-    padding-top: 10px;
-    padding-left: 20px;
     color: white;
-    display: block;
     text-align: center;
 }
 .literka{
@@ -155,10 +156,8 @@ input[type=button]:focus{
 
 - - - - - - - - - - - - - - - - */
 #kategorie-przyciski {
-    width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px;
+    width: 90%;
+    padding: 4.5%;
     margin-top: 30px;
     text-align: center;
 
@@ -179,6 +178,25 @@ input[type=button]:focus{
 .kategoria:hover {
     background-color: #c74c4c;
     
+}
+@media(min-width: 560px)
+{
+    #szubienica{
+        float: left;
+        width: 44vw;
+        height: auto;
+        max-width: 450px;
+    }
+
+    #alfabet{
+        float: left;
+        text-align: center;
+        width: 44vw;
+        max-width: 450px;
+        height: auto;
+        color: white;
+        text-align: center;
+    } 
 }
 /* - - - - - - - - - - - - - - - 
 
