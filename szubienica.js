@@ -52,12 +52,6 @@ function changeLanguage() {
     else {
         document.getElementById("jezyk").innerHTML = '<img id="flaga" src="img/flagauk.png"><h4>UK</h4>';
         document.getElementById("plansza").innerHTML = "Choose category!";
-        kat0 = ["pulp fiction", "the green mile", "shawshank redemption", "saw", "the texas chainsaw massacre", "matrix", "untouchables", "the lord of the rings", "mr nobody"];
-        kat1 = ["zinedine zidane", "cristiano ronaldo", "ronaldinho", "lionel messi", "luis figo", "eric cantona", "wayne rooney", "van der sar", "thierry henry", "ronaldinho"];
-        kat2 = ["rwanda", " suazi", "lesotho", "liberia", "saint kittis and nevis", "poland", "madagascar", "gabon", "kyrgyzstan", "tajikistan"];
-        kat3 = ["mouse", "printer", "microphone", "hard drive", "motherboard", "ram memory", "case", "keyboard", "speakers", "procesor"];
-        kat4 = ["lost", "stranger things", "dark", "prison break", "dexter", "the walking dead", "breaking bad", "better call saul", "black mirror", "narcos"];
-        kat5 = ["bmw", "mercedes", "pagani", "bugatti", "citroen", "peugeot", "audi", "saab", "volvo", "dacia"];
     }
     language = !language;
     start();
