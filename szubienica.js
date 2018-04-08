@@ -3,15 +3,12 @@ var password = "";
 var haslo = ""; // password with blanck spaces
 var haslo2 = haslo;
 var win = 0; // 0 means that you won the game
+var language = false;
+var kat0, kat1, kat2, kat3, kat4, kat5;
 
 // baza hasel
-var kat0 = ["pilp fiction", "zielona mila", "skazani na shawshank", "piła", "teksańska masakra piłą mechaniczną", "matrix", "nietykalni", "władca pierścieni", "mr nobody"];
-var kat1 = ["zinedine zidane", "crostiano ronaldo", "ronaldinho", "lionel messi", "luis figo", "eric cantona", "wayne rooney", "van der sar", "thierry henry", "ronaldinho"];
-var kat2 = ["rwanda", " suazi", "lesotho", "liberia", "saint kittis i nevis", "polska", "madagaskar", "gabon", "kirgistan", "tadżykistan"];
-var kat3 = ["myszka", "drukarka", "mikrofon", "dysk twardy", "płyta głowna", "pamięć ram", "obudowa", "klawiatura", "głośniki", "procesor"];
-var kat4 = ["lost", "stranger things", "dark", "skazani na śmierć", "dexter", "the walking dead", "breaking bad", "better call saul", "black mirror", "narcos"];
-var kat5 = ["bmw", "mercedes", "pagani", "bugatti", "citroen", "peugeot", "audi", "saab", "volvo", "dacia"];
 var kategories = ["Movie", "Football Player", "Country", "PC Equipment", "TV Show", "Car"];
+var kategorie = ["Film", "Piłkarz", "Państwo", "Sprzęt komputerowy", "Serial", "Samochód"];
 
 window.onload = start;
 
@@ -24,6 +21,31 @@ function writeWord(m_pass) {
             haslo = haslo + "-";
     }
     wtitePassword(haslo);
+}
+
+function changeLanguage() {
+    if(language){
+        document.getElementById("jezyk").innerHTML = '<img id="flaga" src="img/flagapl.jpg"><h4>PL</h4>';
+        document.getElementById("plansza").innerHTML = "Wybierz kategorię!";
+        kat0 = ["pulp fiction", "zielona mila", "skazani na shawshank", "piła", "teksańska masakra piłą mechaniczną", "matrix", "nietykalni", "władca pierścieni", "mr nobody"];
+        kat1 = ["zinedine zidane", "cristiano ronaldo", "ronaldinho", "lionel messi", "luis figo", "eric cantona", "wayne rooney", "van der sar", "thierry henry", "ronaldinho"];
+        kat2 = ["rwanda", " suazi", "lesotho", "liberia", "saint kittis i nevis", "polska", "madagaskar", "gabon", "kirgistan", "tadżykistan"];
+        kat3 = ["myszka", "drukarka", "mikrofon", "dysk twardy", "płyta głowna", "pamięć ram", "obudowa", "klawiatura", "głośniki", "procesor"];
+        kat4 = ["lost", "stranger things", "dark", "skazani na śmierć", "dexter", "the walking dead", "breaking bad", "better call saul", "black mirror", "narcos"];
+        kat5 = ["bmw", "mercedes", "pagani", "bugatti", "citroen", "peugeot", "audi", "saab", "volvo", "dacia"];
+    }
+    else {
+        document.getElementById("jezyk").innerHTML = '<img id="flaga" src="img/flagauk.png"><h4>UK</h4>';
+        document.getElementById("plansza").innerHTML = "Choose category!";
+        kat0 = ["pulp fiction", "zielona mila", "skazani na shawshank", "piła", "teksańska masakra piłą mechaniczną", "matrix", "nietykalni", "władca pierścieni", "mr nobody"];
+        kat1 = ["zinedine zidane", "cristiano ronaldo", "ronaldinho", "lionel messi", "luis figo", "eric cantona", "wayne rooney", "van der sar", "thierry henry", "ronaldinho"];
+        kat2 = ["rwanda", " suazi", "lesotho", "liberia", "saint kittis and nevis", "poland", "madagascar", "gabon", "kyrgyzstan", "tajikistan"];
+        kat3 = ["mouse", "printer", "microphone", "hard drive", "motherboard", "ram memory", "case", "keyboard", "speakers", "procesor"];
+        kat4 = ["lost", "stranger things", "dark", "prison break", "dexter", "the walking dead", "breaking bad", "better call saul", "black mirror", "narcos"];
+        kat5 = ["bmw", "mercedes", "pagani", "bugatti", "citroen", "peugeot", "audi", "saab", "volvo", "dacia"];
+    }
+    language = !language;
+    start();
 }
 
 function losuj(nrKat) {
@@ -75,16 +97,28 @@ function wtitePassword(haselko) {
 function start() {
     var divContent = "";
     var kategoryContent = "";
-    var letters = "aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż";
+    var litery = "aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż";
+    var letters = "abcdefghijklmnopqrstuvwxyz";
+    var duzeLitery = litery.toUpperCase();
     var bigLetters = letters.toUpperCase();
     
-    for(i = 0; i < 35; i++) {
-        divContent = divContent + '<input type="button" id="'+letters.charAt(i)+'" class="literka" onclick="sprawdz('+i+')" value="'+bigLetters.charAt(i)+'">';
+    if(!language){
+        for(i = 0; i < 35; i++) {
+            divContent = divContent + '<input type="button" id="'+litery.charAt(i)+'" class="literka" onclick="sprawdz('+i+')" value="'+duzeLitery.charAt(i)+'">';
+        }
+        for(i = 0; i < 6; i++) {
+        kategoryContent = kategoryContent + '<div id="kat' + i + '" class="kategoria" onclick="losuj('+i+')">'+kategorie[i]+'</div>';
     }
-    
-    for(i = 0; i < 6; i++) {
+    }
+    else {
+        for(i = 0; i < 26; i++) {
+            divContent = divContent + '<input type="button" id="'+letters.charAt(i)+'" class="literka" onclick="sprawdz('+i+')" value="'+bigLetters.charAt(i)+'">';
+        }
+        for(i = 0; i < 6; i++) {
         kategoryContent = kategoryContent + '<div id="kat' + i + '" class="kategoria" onclick="losuj('+i+')">'+kategories[i]+'</div>';
     }
+    }
+    
     document.getElementById("alfabet").innerHTML = divContent;
     document.getElementById("kategorie-przyciski").innerHTML = kategoryContent;
     
@@ -102,7 +136,14 @@ function sprawdz(letterNumber) {
     haslo2 = haslo;
     haslo = "";
     var zmienna = 0;
-    var letters = "aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż";
+    var letters = "";
+    if(!language){
+        letters = "aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż";
+    }
+    else {
+        letters = "abcdefghijklmnopqrstuvwxyz";
+    }
+
     var character = letters.charAt(letterNumber);
     
     for (var i = 0; i < password.length; i++){ 
