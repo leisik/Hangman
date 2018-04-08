@@ -1,4 +1,5 @@
 var wrongAnswers = 0; //number of wrong answers given during 1 game
+var chancesLeft = 0;
 var password = "";
 var haslo = ""; // password with blanck spaces
 var haslo2 = haslo;
@@ -153,7 +154,7 @@ function start() {
     //jquery functions to clone divs for restoration
     divPlansza = divContent;
     divAlfabet = divContent;
-
+    chanceLeft();
 }
 
 //changes pic when needed
@@ -228,7 +229,14 @@ function sprawdz(letterNumber) {
         }
     }
     console.log(wrongAnswers);
+    chanceLeft();
 }
+//shows how many chances are left
+function chanceLeft() {
+    chancesLeft = 9 - wrongAnswers;
+    document.getElementById("licznik").innerHTML = "Pozostało " + chancesLeft + " prób";
+}
+
 //reloads website
 function restart(){
     document.getElementById("plansza").style.backgroundColor = "black";
