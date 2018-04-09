@@ -4,40 +4,44 @@ var password = "";
 var haslo = ""; // password with blanck spaces
 var haslo2 = haslo;
 var win = 0; // 0 means that you won the game
-var language = false;
+var language = false; //jezyk polski
 var kat0, kat1, kat2, kat3, kat4, kat5;
 var divPlansza, divAlfabet, divSzubienica;
 var wylosowane;
+var alfabet = "aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż";
 
 // baza hasel
 var kategories = ["Movie", "Football Player", "Country", "PC Equipment", "TV Show", "Car"];
 var kategorie = ["Film", "Piłkarz", "Państwo", "Sprzęt komputerowy", "Serial", "Samochód"];
 
-if(!language){
+
+
+window.onload = start;
+
+function allPasswords() {
+    if(!language){
     kat0 = ["pulp fiction", "zielona mila", "skazani na shawshank", "piła", "teksańska masakra piłą mechaniczną", "matrix", "nietykalni", "władca pierścieni", "mr nobody"];
     kat1 = ["zinedine zidane", "cristiano ronaldo", "ronaldinho", "lionel messi", "luis figo", "eric cantona", "wayne rooney", "van der sar", "thierry henry", "ronaldinho"];
     kat2 = ["rwanda", " suazi", "lesotho", "liberia", "saint kittis i nevis", "polska", "madagaskar", "gabon", "kirgistan", "tadżykistan"];
     kat3 = ["myszka", "drukarka", "mikrofon", "dysk twardy", "płyta główna", "pamięć ram", "obudowa", "klawiatura", "głośniki", "procesor"];
     kat4 = ["lost", "stranger things", "dark", "skazani na śmierć", "dexter", "the walking dead", "breaking bad", "zadzwon do saula", "czarna lustro", "narcos"];
 }
-if(language) {
+else if(language) {
     kat0 = ["pulp fiction", "the green mile", "shawshank redemption", "saw", "the texas chainsaw massacre", "matrix", "untouchables", "the lord of the rings", "mr nobody"];
     kat1 = ["zinedine zidane", "cristiano ronaldo", "ronaldinho", "lionel messi", "luis figo", "eric cantona", "wayne rooney", "van der sar", "thierry henry", "ronaldinho"];
-    kat2 = ["rwanda", " suazi", "lesotho", "liberia", "saint kittis and nevis", "poland", "madagascar", "gabon", "kyrgyzstan", "tajikistan"];
+    kat2 = ["afghanistan", "algeria", "andorra", "angola", "antigua and deps", "argentina", "armenia", "australia", "austria", "azerbaijan", "bahamas", "bahrain", "bangladesh", "barbados", "belarus", "belgium", "belize", "benin", "bhutan", "bolivia", "bosnia herzegovina", "botswana", "brazil", "brunei", "bulgaria", "burkina", "burundi", "cambodia", "cameroon", "canada", "cape verde", "central african rep", "chad", "chile", "china", "colombia", "comoros", "congo", "congo {democratic rep}", "costa rica", "croatia", "cuba", "cyprus", "czech republic", "denmark", "djibouti", "dominica", "dominican republic", "east timor", "ecuador", "egypt", "el salvador", "equatorial guinea", "eritrea", "estonia", "ethiopia", "fiji", "finland", "france", "gabon", "gambia", "georgia", "germany", "ghana", "greece", "grenada", "guatemala", "guinea", "guinea-bissau", "guyana", "haiti", "honduras", "hungary", "iceland", "india", "indonesia", "iran", "iraq", "ireland", "israel", "italy", "ivory coast", "jamaica", "japan", "jordan", "kazakhstan", "kenya", "kiribati", "korea north", "korea south", "kosovo", "kuwait", "kyrgyzstan", "laos", "latvia", "lebanon", "lesotho", "liberia", "libya", "liechtenstein", "lithuania", "luxembourg", "macedonia", "madagascar", "malawi", "malaysia", "maldives", "mali", "malta", "marshall islands", "mauritania", "mauritius", "mexico", "micronesia", "moldova", "monaco", "mongolia", "montenegro", "morocco", "mozambique", "myanmar, {burma}", "namibia", "nauru", "nepal", "netherlands", "new zealand", "nicaragua", "niger", "nigeria", "norway", "oman", "pakistan", "palau", "panama", "papua new guinea", "paraguay", "peru", "philippines", "poland", "portugal", "qatar", "romania", "russian federation", "rwanda", "st kitts & nevis", "st lucia", "saint vincent and the grenadines", "samoa", "san marino", "sao tome & principe", "saudi arabia", "senegal", "serbia", "seychelles", "sierra leone", "singapore", "slovakia", "slovenia", "solomon islands", "somalia", "south africa", "south sudan", "spain", "sri lanka", "sudan", "suriname", "swaziland", "sweden", "switzerland", "syria", "taiwan", "tajikistan", "tanzania", "thailand", "togo", "tonga", "trinidad and tobago", "tunisia", "turkey", "turkmenistan", "tuvalu", "uganda", "ukraine", "united arab emirates", "united kingdom", "united states", "uruguay", "uzbekistan", "vanuatu", "vatican city", "venezuela", "vietnam", "yemen", "zambia", "zimbabwe"];
     kat3 = ["mouse", "printer", "microphone", "hard drive", "motherboard", "ram memory", "case", "keyboard", "speakers", "procesor"];
     kat4 = ["lost", "stranger things", "dark", "prison break", "dexter", "the walking dead", "breaking bad", "better call saul", "black mirror", "narcos"];
     }
 
 kat5 = ["alfa romeo", "aston martin", "audi", "bentley", "benz", "bmw", "bugatti", "cadillac", "chevrolet", 
-"chrysler", "citroën", "corvette", "daf", "dacia", "daewoo", "daihatsu", "datsun", "de lorean", "dino", "dodge",  
+"chrysler", "citroen", "corvette", "daf", "dacia", "daewoo", "daihatsu", "datsun", "de lorean", "dino", "dodge",  
 "farboud", "ferrari", "fiat", "ford", "honda", "hummer", "hyundai", "jaguar", "jeep", "kia", "koenigsegg",   
 "lada", "lamborghini", "lancia", "land rover", "lexus", "ligier", "lincoln", "lotus", "martini", "maserati", "maybach",  
 "mazda", "mclaren", "mercedes benz", "mini", "mitsubishi", "nissan", "noble", "opel", "peugeot", "pontiac",  
 "porsche", "renault", "rolls royce", "saab", "seat", "skoda", "smart", "spyker", "subaru", "suzuki", "toyota",   
 "vauxhall", "volkswagen", "volvo"] 
-
-
-window.onload = start;
+}
 
 //writes word with blanck spaces in the top of the screen
 function writeWord(m_pass) {
@@ -53,15 +57,20 @@ function writeWord(m_pass) {
 
 //chanhes langueage in whole game
 function changeLanguage() {
+    
     if(language){
         document.getElementById("jezyk").innerHTML = '<img id="flaga" src="img/flagapl.jpg"><h4>PL</h4>';
         document.getElementById("plansza").innerHTML = "Wybierz kategorię!";
+        alfabet = "aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż";
     }
     else {
         document.getElementById("jezyk").innerHTML = '<img id="flaga" src="img/flagauk.png"><h4>UK</h4>';
         document.getElementById("plansza").innerHTML = "Choose category!";
+        alfabet = "abcdefghijklmnopqrstuvwxyz";
     }
     language = !language;
+    console.log(language);
+    password = "";
     start();
 }
 
@@ -70,6 +79,9 @@ function losuj(wylosowane) {
     var numer;
     if(wylosowane == 5){
         numer = Math.floor(Math.random()*kat5.length);
+    }
+    else if(wylosowane == 2){
+        numer = Math.floor(Math.random()*kat2.length);
     }
     else {
         numer = Math.floor(Math.random()*9);
@@ -156,6 +168,7 @@ function start() {
     divPlansza = divContent;
     divAlfabet = divContent;
     chanceLeft();
+    allPasswords();
 }
 
 //changes pic when needed
@@ -173,15 +186,8 @@ function sprawdz(letterNumber) {
         haslo2 = haslo;
         haslo = "";
         var zmienna = 0;
-        var letters = "";
-        if(!language){
-            letters = "aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż";
-        }
-        else {
-            letters = "abcdefghijklmnopqrstuvwxyz";
-        }
 
-        var character = letters.charAt(letterNumber);
+        var character = alfabet.charAt(letterNumber);
 
         for (var i = 0; i < password.length; i++){ 
             if(password[i] == character){
@@ -213,6 +219,7 @@ function sprawdz(letterNumber) {
             document.getElementById(character).style.backgroundColor = "rgba(255,0,0,0.3)";
             if(wrongAnswers < 9){wrongAnswers++;}
         }
+        
         document.getElementById(character).style.cursor = "default";
         document.getElementById(character).style.pointerEvents = "none";
 
@@ -221,25 +228,44 @@ function sprawdz(letterNumber) {
 
         if (wrongAnswers >= 9)
         {
-            document.getElementById("alfabet").innerHTML = 'Przegrana! prawidłowe hasło: <span id="correct-answer"> <br />'+ password +'</span><br /><br /><span class="powtorka" onclick="restart()">JESZCZE RAZ?</span>';
-            document.getElementById("plansza").style.backgroundColor = "#a52a2a";
-            document.getElementById("plansza").style.color = "black";
+            if(!language) {
+                document.getElementById("alfabet").innerHTML = 'Przegrana! prawidłowe hasło: <span id="correct-answer"> <br />'+ password +'</span><br /><br /><span class="powtorka" onclick="restart()">JESZCZE RAZ?</span>';
+                document.getElementById("plansza").style.backgroundColor = "#a52a2a";
+                document.getElementById("plansza").style.color = "black";
+            }
+            else {
+                document.getElementById("alfabet").innerHTML = 'You lost! Correct password is: <span id="correct-answer"> <br />'+ password +'</span><br /><br /><span class="powtorka" onclick="restart()">PLAY AGAIN</span>';
+                document.getElementById("plansza").style.backgroundColor = "#a52a2a";
+                document.getElementById("plansza").style.color = "black";
+            }
         }
 
             if (haslo == password)
         { 
-            document.getElementById("alfabet").innerHTML = 'BRAWO, WYGRAŁEŚ! Prawidłowe hasło: <span id="correct-answer"> <br />'+ haslo +'</span><br /><br /><span class="powtorka" onclick="restart()">JESZCZE RAZ?</span>';
-            document.getElementById("plansza").style.backgroundColor = "rgba(15,240,30,0.7)";
-            document.getElementById("plansza").style.color = "black";
+            if(!language) {
+                document.getElementById("alfabet").innerHTML = 'BRAWO, WYGRAŁEŚ! Prawidłowe hasło: <span id="correct-answer"> <br />'+ haslo +'</span><br /><br /><span class="powtorka" onclick="restart()">JESZCZE RAZ?</span>';
+                document.getElementById("plansza").style.backgroundColor = "rgba(15,240,30,0.7)";
+                document.getElementById("plansza").style.color = "black";
+            }
+            else {
+                document.getElementById("alfabet").innerHTML = 'CONGRATULATIONS, YOU WON! Correct password is: <span id="correct-answer"> <br />'+ haslo +'</span><br /><br /><span class="powtorka" onclick="restart()">PLAY AGAIN</span>';
+                document.getElementById("plansza").style.backgroundColor = "rgba(15,240,30,0.7)";
+                document.getElementById("plansza").style.color = "black";
+            }
         }
     }
-    console.log(character);
+    console.log(character, alfabet);
     chanceLeft();
 }
 //shows how many chances are left
 function chanceLeft() {
     chancesLeft = 9 - wrongAnswers;
-    document.getElementById("licznik").innerHTML = "Pozostało " + chancesLeft + " prób";
+    if(!language){
+        document.getElementById("licznik").innerHTML = "Pozostało " + chancesLeft + " prób";
+    }
+    else {
+        document.getElementById("licznik").innerHTML = chancesLeft + " attempts left";
+    }
 }
 
 //reloads website
@@ -250,7 +276,6 @@ function restart(){
     losuj(wylosowane);
     wrongAnswers = 0;
     win = 0; 
-    language = false;
     changePic(0); 
     chanceLeft();
 }
