@@ -272,7 +272,7 @@ input[type=button]:focus{
        CHANGE MEDIA SECTION
 
 - - - - - - - - - - - - - - - - */
-@media(min-width: 750px)
+@media(min-width: 560px)
 {
     #szubienica{
         float: left;
@@ -314,7 +314,7 @@ input[type=button]:focus{
         font-size: 1.75rem;
     }
 }
-@media(min-width: 920px)
+@media(min-width: 950px)
 {
     #szubienica{
         float: left;
