@@ -1,0 +1,1 @@
+Simple "Hangman" game written during JavaScript course. Game includes Polish and English passwords
