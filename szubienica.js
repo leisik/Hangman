@@ -8,7 +8,11 @@ var language = false; //jezyk polski
 var kat0, kat1, kat2, kat3, kat4, kat5;
 var divPlansza, divAlfabet, divSzubienica;
 var wylosowane;
+var correctAnswersInARow = 0;
 var alfabet = "aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż";
+var dzien = new Date();
+var startTime = 0;
+var stopTime = 0;
 
 // baza hasel
 var kategories = ["Movie", "Football Player", "Country", "PC Equipment", "TV Show", "Car"];
@@ -24,7 +28,7 @@ function allPasswords() {
     kat1 = ["zinedine zidane", "cristiano ronaldo", "ronaldinho", "lionel messi", "luis figo", "eric cantona", "wayne rooney", "van der sar", "thierry henry", "ronaldinho"];
     kat2 = ["afganistan", "albania", "algieria", "andora", "angola", "antigua i barbuda", "arabia saudyjska", "argentyna", "armenia", "australia", "austria", "azerbejdżan", "bahamy", "bahrajn", "bangladesz", "barbados", "belgia", "belize", "benin", "bhutan", "białoruś", "boliwia", "bośnia hercegowina", "botswana", "brazylia", "brunei", "bułgaria", "burkina faso", "burundi", "chile", "chiny", "chorwacja", "cypr", "czad", "czarnogóra", "czechy", "dania", "demokratyczna republika konga", "dominika", "dominikana", "dżibuti", "egipt", "ekwador", "erytrea", "estonia", "etiopia", "fidżi", "filipiny", "finlandia", "francja", "gabon", "gambia", "ghana", "grecja", "grenada", "gruzja", "gujana", "gwatemala", "gwinea", "gwinea bissau", "gwinea równikowa", "haiti", "hiszpania", "holandia", "honduras", "indie", "indonezja", "irak", "iran", "irladnia", "islandia", "izrael", "jamajka", "japonia", "jemen", "jordania", "kambodża", "kanada", "kamerun", "katar", "kazachstan", "kenia", "kirgistan", "kiribati", "kolumbia", "kongo", "komory", "korea południowa", "korea północna", "kosowo", "kostaryka", "kuba", "kuwejt", "laos", "lesotho", "liban", "liberia", "libia", "liechtenstein", "litwa", "luksemburg", "Łotwa", "macedonia", "madagaskar", "malawi", "malediwy", "malezja", "mali", "malta", "maroko", "mauretania", "mauritius", "meksyk", "mikronezja", "mjanma, {birma}", "mołdawia", "monako", "mongolia", "mozambik", "namibia", "nauru", "nepal", "niemcy", "niger", "nigeria", "nikaragua", "norwegia", "nowa zelandia", "oman", "pakistan", "palau", "panama", "papua nowa gwinea", "paragwaj", "peru", "polska", "portugalia", "republika południowej afryki", "republika sródkowoafrykaństwa", "republika zielonego przylądka", "rosja", "rumunia", "rwanda", "saint vincent i grenadiny", "saint lucia", "saint kitts i nevis", "salwador", "samoa", "san marino", "senegal", "serbia", "seszele", "sierra leone", "singapur", "słowacja", "słowenia", "somalia", "sri lanka", "stany zjednoczone", "suazi", "sudan", "sudan połduniowy", "surinam", "syria", "szwajcaria", "szwecja", "tadżykistan", "tajlandia", "tajwan", "tanzania", "timor wschodni", "togo", "tonga", "trinidad i tobago", "tunezja", "turcja", "turkmenistan", "tuvalu", "uganda", "ukraina", "urugwaj", "uzbekistan", "vanuatu", "watykan", "wenezuela", "węgry", "wielka brytania", "wietnam", "włochy", "wybrzeże kości słoniowej", "wyspy marshalla", "wyspy salomona", "wyspy Świętego tomasza i książęca", "zambia", "zimbabwe", "zjednoczone emiraty arabskie"];
     kat3 = ["myszka", "drukarka", "mikrofon", "dysk twardy", "płyta główna", "pamięć ram", "obudowa", "klawiatura", "głośniki", "procesor"];
-    kat4 = ["lost", "stranger things", "dark", "skazani na śmierć", "dexter", "the walking dead", "breaking bad", "zadzwon do saula", "czarna lustro", "narcos"];
+    kat4 = ["lost", "stranger things", "dark", "skazani na śmierć", "dexter", "the walking dead", "breaking bad", "zadzwon do saula", "czarne lustro", "narcos"];
 }
 else if(language) {
     kat0 = ["pulp fiction", "the green mile", "shawshank redemption", "saw", "the texas chainsaw massacre", "matrix", "untouchables", "the lord of the rings", "mr nobody"];
@@ -55,7 +59,7 @@ function writeWord(m_pass) {
     wtitePassword(haslo);
 }
 
-//chanhes langueage in whole game
+//changes langueage in whole game
 function changeLanguage() {
     
     if(language){
@@ -69,8 +73,8 @@ function changeLanguage() {
         alfabet = "abcdefghijklmnopqrstuvwxyz";
     }
     language = !language;
-    console.log(language);
     password = "";
+    correctAnswersInARow = 0;
     start();
 }
 
@@ -106,13 +110,12 @@ function losuj(wylosowane) {
     else if(wylosowane == 5) {
         password = kat5[numer];
     }
-    console.log(numer, password);
     writeWord(password); 
+    console.log(password);
 }
 
 function changeCategory(nrKat) {
     wylosowane = nrKat;
-    console.log("wybrano kat" + nrKat + ": " +kategories[nrKat]);
     for(i=0; i<6;i++) 
     {
         var ups = "kat" + i;
@@ -126,6 +129,7 @@ function changeCategory(nrKat) {
          }
 
     }
+    correctAnswersInARow = 0;
     restart();
 }
 
@@ -177,12 +181,18 @@ function changePic(wrongAnswers) {
     document.getElementById("szubienica").innerHTML = plik;
 }
 
+function measureTime() {
+    var d = new Date();
+    var startStop = d.getTime();
+    return startStop;
+}
 //checks if picked letter is in password
 function sprawdz(letterNumber) { 
     if(password.length > 0)
     {
         //var node = document.getElementById("plansza");
         //var answer = node.textContent;
+        //startTime = dzien.getTime(); //gets the time to calculeta answer time
         haslo2 = haslo;
         haslo = "";
         var zmienna = 0;
@@ -232,36 +242,44 @@ function sprawdz(letterNumber) {
                 document.getElementById("alfabet").innerHTML = 'Przegrana! prawidłowe hasło: <span id="correct-answer"> <br />'+ password +'</span><br /><br /><span class="powtorka" onclick="restart()">JESZCZE RAZ?</span>';
                 document.getElementById("plansza").style.backgroundColor = "#a52a2a";
                 document.getElementById("plansza").style.color = "black";
+                correctAnswersInARow = 0;
             }
             else {
                 document.getElementById("alfabet").innerHTML = 'You lost! Correct password is: <span id="correct-answer"> <br />'+ password +'</span><br /><br /><span class="powtorka" onclick="restart()">PLAY AGAIN</span>';
                 document.getElementById("plansza").style.backgroundColor = "#a52a2a";
                 document.getElementById("plansza").style.color = "black";
+                correctAnswersInARow = 0;
             }
         }
 
             if (haslo == password)
+                
         { 
+            stopTime = measureTime(); 
+            var czasOdp = ((stopTime - startTime)/1000);
+            console.log(startTime, stopTime, czasOdp);
+            document.getElementById("clock").innerHTML = "Czas odpowiedzi:  " + czasOdp + " sekund";
             if(!language) {
                 document.getElementById("alfabet").innerHTML = 'BRAWO, WYGRAŁEŚ! Prawidłowe hasło: <span id="correct-answer"> <br />'+ haslo +'</span><br /><br /><span class="powtorka" onclick="restart()">JESZCZE RAZ?</span>';
                 document.getElementById("plansza").style.backgroundColor = "rgba(15,240,30,0.7)";
                 document.getElementById("plansza").style.color = "black";
+                correctAnswersInARow++;
             }
             else {
                 document.getElementById("alfabet").innerHTML = 'CONGRATULATIONS, YOU WON! Correct password is: <span id="correct-answer"> <br />'+ haslo +'</span><br /><br /><span class="powtorka" onclick="restart()">PLAY AGAIN</span>';
                 document.getElementById("plansza").style.backgroundColor = "rgba(15,240,30,0.7)";
                 document.getElementById("plansza").style.color = "black";
+                correctAnswersInARow++;
             }
         }
     }
-    console.log(character, alfabet);
     chanceLeft();
 }
 //shows how many chances are left
 function chanceLeft() {
     chancesLeft = 9 - wrongAnswers;
     if(!language){
-        document.getElementById("licznik").innerHTML = "Pozostało " + chancesLeft + " prób";
+        document.getElementById("licznik").innerHTML = '<span class="left">Pozostało ' + chancesLeft + ' prób</span> <span class="right">Pod rzad: ' + correctAnswersInARow + '</span>';
     }
     else {
         document.getElementById("licznik").innerHTML = chancesLeft + " attempts left";
@@ -278,4 +296,7 @@ function restart(){
     win = 0; 
     changePic(0); 
     chanceLeft();
+    startTime = measureTime();
+    console.log(startTime);
+    
 }
