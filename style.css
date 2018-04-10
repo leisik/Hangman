@@ -54,7 +54,7 @@ table {
 body{
     background-color: black; 
     font-family: 'Source Code Pro', monospace;
-    font-size: 1.75rem;
+    font-size: 1.25rem;
 }
 .container{
     width: 100%;
@@ -125,6 +125,7 @@ a {
     border-radius: 10px;
     padding: 5px 10px;
     color: white;
+    font-size: 1.75rem;
 }
 
 #jezyk:hover{
@@ -215,22 +216,30 @@ input[type=button]:focus{
     width: 100%;
     text-align: center;
     text-decoration: none;
-    color: rgba(15,240,30,0.7);
+    color: black;
     font-weight: bold;
-    font-size: 2.125rem;
+    font-size: 1.75rem;
     cursor: pointer;
+    background-color: rgba(15,240,30,0.7);
+    border-radius: 15px;
+    padding: 0.125rem 1rem;
+    position: relative;
+    top: 0.5rem;
+    border: 1px solid gray;
 }
 .powtorka:hover{
-    color:white;
+    color: white;
 }
 #correct-answer{
     text-transform: uppercase;
     color: aquamarine;
     width: auto;
     height: auto;
-    font-size: 2.25rem;
+    font-size: 1.5rem;
     font-weight: 700;
     text-decoration: underline;
+    position: relative;
+    top: 10px;
 }
 /* - - - - - - - - - - - - - - - 
 
@@ -269,7 +278,7 @@ input[type=button]:focus{
 
 - - - - - - - - - - - - - - - - */
 #clock {
-    width: 80%;
+    width: 100%;
     line-height: 2rem;
     font-size: 1.25rem;
     font-weight: bold;
@@ -277,9 +286,6 @@ input[type=button]:focus{
     text-align: center;
     border-radius: 5px;
     color: #222;
-    position: absolute;
-    bottom 50px;
-    left: 100px;
     background-color:burlywood;
 }
 /* kiedys tu bedzie obsluga plikow
@@ -307,6 +313,19 @@ input[type=button]:focus{
 - - - - - - - - - - - - - - - - */
 @media(min-width: 560px)
 {
+    .powtorka {
+        font-size: 2.125rem;
+        position: relative;
+        top: 1rem;
+    }
+    #correct-answer{
+        font-size: 2.25rem;
+        position: relative;
+        top: 0.625rem;
+    }
+    body {
+        font-size: 1.5rem;
+    }
     #plansza{
         font-size: 2.4rem;
         margin-bottom: 15px;
