@@ -297,6 +297,5 @@ function restart(){
     changePic(0); 
     chanceLeft();
     startTime = measureTime();
-    console.log(startTime);
     
 }
