@@ -229,6 +229,7 @@ input[type=button]:focus{
 }
 .powtorka:hover{
     color: white;
+    transform: scale(1.05);
 }
 #correct-answer{
     text-transform: uppercase;
@@ -268,9 +269,9 @@ input[type=button]:focus{
     text-align: center;
 }
 .kategoria:hover {
-    background-color: #c74c4c;
     transform: scale(1.05);
     font-weight: 600;
+    color: #eeffcc;
     
 }
 
